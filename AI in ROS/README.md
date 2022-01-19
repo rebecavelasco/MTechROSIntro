@@ -5,5 +5,5 @@
 ## Train.ipynb
 ### Jupyter notebook used to train the network
 ## Usefull Sources:
-###Dataset: https://benchmark.ini.rub.de
-###Nvidia deep learning with Nano: https://github.com/dusty-nv/ros_deep_learning
+### Dataset: https://benchmark.ini.rub.de
+### Nvidia deep learning with Nano: https://github.com/dusty-nv/ros_deep_learning
