@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-<node pkg="path_planner" name="planner" type="GoalPlanner.py" args=""/> 
-<node pkg="path_planner" name="gripper" type="add_contact.py" args=""/> 
-</launch>
