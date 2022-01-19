@@ -1,0 +1,2 @@
+string date
+string hour

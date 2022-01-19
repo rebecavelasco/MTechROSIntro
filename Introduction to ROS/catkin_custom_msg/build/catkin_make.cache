@@ -1,0 +1,2 @@
+listener:talker
+-DCATKIN_DEVEL_PREFIX=/home/new/day 1/catkin_custom_msg/devel -DCMAKE_INSTALL_PREFIX=/home/new/day 1/catkin_custom_msg/install -G Unix Makefiles
