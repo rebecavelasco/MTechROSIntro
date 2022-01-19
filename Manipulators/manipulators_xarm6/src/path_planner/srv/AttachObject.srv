@@ -1,0 +1,4 @@
+bool action
+string frame
+---
+bool status

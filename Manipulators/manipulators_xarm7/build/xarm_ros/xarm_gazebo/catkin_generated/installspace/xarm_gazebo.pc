@@ -1,0 +1,8 @@
+prefix=/home/new/Desktop/manipulators/install
+
+Name: xarm_gazebo
+Description: Description of xarm_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,8 +1,0 @@
-prefix=/home/new/day 1/catkin_custom_msg/devel
-
-Name: talker
-Description: Description of talker
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
