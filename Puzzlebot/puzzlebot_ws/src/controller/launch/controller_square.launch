@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+	<node name="controller" pkg="controller" type="controllers_square.py"/>
+</launch>
+	

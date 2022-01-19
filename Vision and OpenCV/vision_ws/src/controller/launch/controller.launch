@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+	<node name="line_detection" pkg="image_proc" type="lane_detect.py" output="screen"/>
+	<node name="colour_detection" pkg="image_proc" type="colour_detect.py" output="screen"/>
+	<node name="controller" pkg="controller" type="controller.py" output="screen"/>
+	<include file="$(find puzzlebot_gazebo)/launch/puzzlebot_gazebo.launch"/>
+</launch>
+
