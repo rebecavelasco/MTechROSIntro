@@ -19,9 +19,8 @@ class Lane:
         return blurred
 
     def apply_ROI(self, image):
-	roi = image[int(0.9*self.frameHeight):int(0.99*self.frameHeight),0:self.frameWidth-1]
-
-	return roi
+        roi = image[int(0.9*self.frameHeight):int(0.99*self.frameHeight),0:self.frameWidth-1]
+        return roi
 
     def get_graph(self,image):
 
@@ -29,14 +28,14 @@ class Lane:
         return graph
     
     def find_line(self,graph):
-       	pos = np.argmax(graph) - 320
-	return pos
+        pos = np.argmax(graph) - 320
+        return pos
 
 class ImageProcessing:
     def __init__(self):
         self.bridge = cv_bridge.CvBridge()
 
-        self.image_sub = rospy.Subscriber('/camera/image_raw',
+        self.image_sub = rospy.Subscriber('/camera_image',
                 Image, self.image_callback) 
 
         self.image_pub = rospy.Publisher('test_image',
@@ -65,9 +64,13 @@ class ImageProcessing:
         graph = self.lane.get_graph(roi)
 
         pos = self.lane.find_line(graph)
-	img_back = self.bridge.cv2_to_imgmsg(roi)
-	self.image_pub.publish(img_back)
-    	self.offset_pub.publish(pos)
+        img_back = self.bridge.cv2_to_imgmsg(roi)
+        self.image_pub.publish(img_back)
+        self.offset_pub.publish(pos)
             
 rospy.init_node('LineDetect')
-follower = ImageProcessing()
+
+try:
+    follower = ImageProcessing()
+except rospy.ROSInterruptException:
+    None

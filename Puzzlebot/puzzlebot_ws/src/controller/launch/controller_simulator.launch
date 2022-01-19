@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+	<rosparam file="$(find controller)/config/config.yaml"/>
+	<include file="$(find puzzlebot_gazebo)/launch/puzzlebot_gazebo.launch"/>
+	<node name="controller" pkg="controller" type="controller_square.py"/>
+</launch>
+	

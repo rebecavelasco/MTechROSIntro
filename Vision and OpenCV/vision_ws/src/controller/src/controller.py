@@ -15,6 +15,8 @@ class controller:
 		
 		self.Kp = -0.0008
 		
+		rospy.on_shutdown(self.stop)
+
 		self.run()
 	
 	def offset_callback(self,msg):
@@ -22,6 +24,16 @@ class controller:
 
 	def red_callback(self,msg):
 		self.red = msg.data
+
+	def stop(self):
+		msg = Twist()
+		msg.linear.x = 0
+		msg.linear.y = 0
+		msg.linear.z = 0
+		msg.angular.x = 0
+		msg.angular.y = 0
+		msg.angular.z = 0
+		self.cmd_vel_pub.publish(msg)
 
 	def run(self):
 		
@@ -56,4 +68,7 @@ class controller:
 			rate.sleep()
 
 if __name__ == "__main__":
-	ctrl = controller()
+	try:
+		ctrl = controller()
+	except rospy.ROSInterruptException:
+		pass

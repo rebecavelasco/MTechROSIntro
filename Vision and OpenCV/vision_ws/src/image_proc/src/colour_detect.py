@@ -10,7 +10,7 @@ class ImageProcessing:
     def __init__(self):
         self.bridge = cv_bridge.CvBridge()
 
-        self.image_sub = rospy.Subscriber('/camera/image_raw',
+        self.image_sub = rospy.Subscriber('/camera_image',
                 Image, self.image_callback) 
 
         self.image_pub = rospy.Publisher('detected',
@@ -32,20 +32,19 @@ class ImageProcessing:
         src_frame = self.image
 
         hsv1 = cv2.cvtColor(src_frame,cv2.COLOR_BGR2HSV)
-	hsv2 = cv2.cvtColor(src_frame,cv2.COLOR_BGR2HSV)
+        hsv2 = cv2.cvtColor(src_frame,cv2.COLOR_BGR2HSV)
 
         lower_red1 = np.array([0,70,50])
         upper_red1 = np.array([10,255,255])
-
-	lower_red2 = np.array([170,70,50])
-	upper_red2 = np.array([180,255,255])
+        
+        lower_red2 = np.array([170,70,50])
+        upper_red2 = np.array([180,255,255])
 	
 
         red_mask1 = cv2.inRange(hsv1,lower_red1,upper_red1)
-	red_mask2 = cv2.inRange(hsv2,lower_red2,upper_red2)
+        red_mask2 = cv2.inRange(hsv2,lower_red2,upper_red2)
 	
         result = np.count_nonzero(red_mask1) + np.count_nonzero(red_mask2)
-        print(result)
 
         red = cv2.bitwise_and(src_frame,src_frame,mask=red_mask1)
 
@@ -64,4 +63,8 @@ class ImageProcessing:
             
 
 rospy.init_node('Colour')
-follower = ImageProcessing()
+
+try:
+    follower = ImageProcessing()
+except rospy.ROSInterruptException:
+    None

@@ -3,7 +3,6 @@
 import rospy
 from std_msgs.msg import Float32
 from geometry_msgs.msg import Twist
-from controller.msg import Command
 from math import pi
 
 
@@ -19,12 +18,9 @@ class square:
 
         self.w_pub = rospy.Publisher('/cmd_vel',Twist,queue_size=10)
 
-        rospy.Subscriber('/command',Command,self.command_callback)
-
-        #initialise variables for the processing of commands
-        self.command = ""
-        self.command_data = 0.0
-
+        # get proportional constants from config file
+        self.Kp_dist = rospy.get_param('/Kp_dist')
+        self.Kp_ang = rospy.get_param('/Kp_ang')
         #setup node
         rospy.init_node("Square")
         self.rate = rospy.Rate(10)
@@ -37,10 +33,6 @@ class square:
 
     def wl_callback(self,msg):
         self.wl = msg.data
-
-    def command_callback(self,msg):
-        self.command = msg.command
-        self.command_data = msg.data
 
     # Main function
     def run(self):
@@ -75,10 +67,11 @@ class square:
             self.wl = 0
             # state 0 = moving along a straight
             if state == 0:
-                msg.linear.x = 0.2
+                error = 0.5 - distance
+                msg.linear.x = self.Kp_dist * error
                 msg.angular.z = 0.0
                 # If at end of a side
-                if distance > 0.5:
+                if error < 0.05:
                     #Reset distance
                     distance = 0.0
                     # If we have not finished the square
@@ -92,10 +85,11 @@ class square:
                         state = 2
             # State 1 = Turning a corner
             elif state == 1:
+                error = pi/2 - angle
                 msg.linear.x = 0.0
-                msg.angular.z = 1.0
+                msg.angular.z = self.Kp_ang * error
                 # If finished turning through 90 degrees
-                if angle > pi/2:
+                if error < 0.01:
                     # Go back to moving straight
                     angle = 0.0
                     state = 0
@@ -110,13 +104,7 @@ class square:
             else:
                 msg.linear.x = 0
                 msg.angular.z = 0
-            
-            # Accept commands
-            if self.command == "stop":
-                state = 2
-            elif self.command == "sides":
-                no_sides = self.command_data
-
+        
             # Publish message and sleep
             self.w_pub.publish(msg)
 
