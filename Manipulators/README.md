@@ -1,5 +1,5 @@
 
-#Manipulators #
+# Manipulators #
 This section covers all required knowledge to control xarm manipualtors with MoveIt! 
 ## ROS Workspaces ##
 The workspace 'manipulators_xarm' containt the solution to the pick and place activity using both arms. In order to change robot models you have to follow these steps
@@ -38,7 +38,7 @@ Steps to launch the simulation (follow this order and source the project in all 
 
        `rosrun pick_place solutionX.py`
 
-## Sugestions to improve the simulation##
+## Sugestions to improve the simulation ##
 
 - If force control is required Set the force control flag in xarmX_world to true and test how well does the system respond. In the folder /xarm/gazebo_ros_control PID parameters should be available to tune the system properly. 
 
