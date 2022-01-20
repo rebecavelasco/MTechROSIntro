@@ -6,7 +6,7 @@
 
 ## 2) System modelling 
 
-### TODO 
+### TODO But now done
 
 ## 3) Manipulators 
 
