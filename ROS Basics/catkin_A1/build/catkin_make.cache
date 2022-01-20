@@ -1,2 +1,0 @@
-basic_comms
--DCATKIN_DEVEL_PREFIX=/home/new/day 1/catkin_A1/devel -DCMAKE_INSTALL_PREFIX=/home/new/day 1/catkin_A1/install -G Unix Makefiles

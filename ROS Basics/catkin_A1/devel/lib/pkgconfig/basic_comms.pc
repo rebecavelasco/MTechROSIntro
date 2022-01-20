@@ -1,8 +1,0 @@
-prefix=/home/new/day 1/catkin_A1/devel
-
-Name: basic_comms
-Description: Description of basic_comms
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

@@ -1,8 +1,0 @@
-prefix=/home/new/day 1/catkin_custom_msg/devel
-
-Name: listener
-Description: Description of listener
-Version: 0.0.0
-Cflags: -I/home/new/day 1/catkin_custom_msg/devel/include
-Libs: -L${prefix}/lib 
-Requires: 
