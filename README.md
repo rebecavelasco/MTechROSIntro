@@ -3,9 +3,9 @@
 
     In this module we covered the basic comunication schemes that can be used in ROS and how to set them up along with any necesssary tools to run your ROS scripts and visualise their information. 
 
- 2) System modelling
+ 2) Robot modelling
     
-    In this module the syntaxis used to model robots and environtments in ROS is introduced along with its visualisation and tools to control their movement.
+    This module covers the syntaxis used to model robots and environments in ROS ( with compatibility for Gazebo) is introduced along with its visualisation and tools to control their movement.
  
  3) Manipulators 
 
