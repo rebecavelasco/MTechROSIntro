@@ -1,7 +1,7 @@
-## Robot_rviz Instructions ##
+## AI_activity Instructions ##
 
 In order to start the activity do the following steps
 
 1) Compile the project
-2) Launch puzzlebot_gazebo puzzlebot_gazebo.launch
-3) Run puzzlebot solution_square.py
+2) Run sign_rec get_samples.py
+3) Run sign_rec detect_sign.py

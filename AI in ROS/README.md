@@ -14,7 +14,7 @@ This section covers all the basics to handle AI implementation in ROS
   - `get_samples.py` : code to retrieve the samples 
 - `Train.ipynb` :Jupyter notebook used to train the network
 
-## AI_activity Instructions ##
+# AI_activity Instructions #
 
 In order to start the activity do the following steps
 
