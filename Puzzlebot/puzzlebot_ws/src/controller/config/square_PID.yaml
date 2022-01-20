@@ -1,0 +1,8 @@
+parameters:
+  Kp_dist: 0.3
+  Ti_dist: 10000
+  Td_dist: 0
+
+  Kp_ang: 3.0
+  Ti_ang: 10000
+  Td_ang: 0
